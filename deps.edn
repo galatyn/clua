@@ -1,0 +1,11 @@
+{:paths ["src" "resources"],
+ :deps
+ {org.clojure/clojure #:mvn{:version "1.12.4"},
+  clj-antlr/clj-antlr #:mvn{:version "0.2.14"}},
+ :aliases
+ {:build
+  {:deps
+   {io.github.clojure/tools.build
+    #:git{:tag "v0.10.5", :sha "2a21b7a"},
+    slipset/deps-deploy #:mvn{:version "0.2.2"}},
+   :ns-default build}}}

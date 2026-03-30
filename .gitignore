@@ -1,0 +1,33 @@
+# clj-kondo cache and imports
+.clj-kondo/.cache/
+.clj-kondo/imports/
+
+# Leiningen
+target/
+classes/
+checkouts/
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+.lein-*
+.nrepl-port
+.nrepl-history
+
+# REPL history
+.repl/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary and debug files
+scratch/
