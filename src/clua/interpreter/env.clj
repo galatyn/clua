@@ -4,8 +4,7 @@
    Environments are stacks of scopes (maps). Variable lookup
    walks up the stack, assignment modifies the appropriate scope."
   (:require [clojure.string :as str]
-            [clua.stdlib.xoshiro256 :as xoshiro]
-            [clua.debug.trace-macro :as trace])
+            [clua.stdlib.xoshiro256 :as xoshiro])
   (:import (java.text DecimalFormatSymbols)
            (java.util ArrayList HashMap LinkedHashMap Locale Map)))
 
@@ -81,14 +80,12 @@
 (defn- env-table-get
   "Get a value from a Lua table used as env-table (respects __index metamethod)"
   [table key env]
-  (trace/traced "env-table-get" key
-                (@cached-table-get-fn table key env)))
+  (@cached-table-get-fn table key env))
 
 (defn- env-table-set!
   "Set a value in a Lua table used as env-table (respects __newindex metamethod)"
   [table key value env]
-  (trace/traced "env-table-set!" key value
-                (@cached-table-set!-fn table key value env)))
+  (@cached-table-set!-fn table key value env))
 
 (def ^:const default-memory-limit
   "Default memory limit: 10 MB"
@@ -242,8 +239,7 @@
    Checks local scopes first, then assigns to global scope via *global-scope*.
    If env-table is set (from load()), it overrides global scope assignments."
   [env name value]
-  (trace/traced "assign!" name value
-                (let [env-table (when-let [id (:env-table-id env)] (resolve-env-table id))
+  (let [env-table (when-let [id (:env-table-id env)] (resolve-env-table id))
                       redirect (some-> (:env-redirect env) deref)
                       reversed-scopes (rseq (:scopes env))]
                   (loop [scopes reversed-scopes]
@@ -285,7 +281,7 @@
                             (if (nil? value)
                               (.remove ^HashMap *global-scope* name)
                               (.put ^HashMap *global-scope* name value))
-                            value))))))))
+                            value)))))))
 
 (defn increment-steps!
   "Increment step counter and check against limit.
