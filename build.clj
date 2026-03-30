@@ -3,7 +3,7 @@
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'io.github.galatyn/clua)
-(def version "0.1.0")
+(def version "0.1.1")
 (def class-dir "target/classes")
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 (def basis (delay (b/create-basis {:project "deps.edn"})))
