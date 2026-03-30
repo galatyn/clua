@@ -70,10 +70,10 @@ service, not compute-intensive number crunching.
 
 ```clojure
 ;; deps.edn
-{io.github.galatyn/clua {:mvn/version "0.1.0"}}
+{io.github.galatyn/clua {:mvn/version "0.1.1"}}
 
 ;; Leiningen
-[io.github.galatyn/clua "0.1.0"]
+[io.github.galatyn/clua "0.1.1"]
 ```
 
 ---
