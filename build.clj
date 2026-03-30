@@ -17,8 +17,10 @@
                 :version   version
                 :basis     @basis
                 :src-dirs  ["src"]
-                :licenses  [{:name "MIT"
-                             :url  "https://opensource.org/licenses/MIT"}]
+                :pom-data  [[:licenses
+                             [:license
+                              [:name "MIT"]
+                              [:url "https://opensource.org/licenses/MIT"]]]]
                 :scm       {:url                 "https://github.com/galatyn/clua"
                             :connection          "scm:git:git://github.com/galatyn/clua.git"
                             :developerConnection "scm:git:ssh://github.com/galatyn/clua.git"
